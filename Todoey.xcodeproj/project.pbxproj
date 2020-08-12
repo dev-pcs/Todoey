@@ -14,7 +14,6 @@
 		12DAD20A24E3217E009ADD26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12DAD20924E3217E009ADD26 /* Assets.xcassets */; };
 		12DAD20D24E3217E009ADD26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12DAD20B24E3217E009ADD26 /* LaunchScreen.storyboard */; };
 		12DAD21524E33A7B009ADD26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DAD21424E33A7B009ADD26 /* SceneDelegate.swift */; };
-		12DAD21724E34FEC009ADD26 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DAD21624E34FEC009ADD26 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +26,6 @@
 		12DAD20C24E3217E009ADD26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12DAD20E24E3217E009ADD26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12DAD21424E33A7B009ADD26 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = ../../../../../../../.Trash/SceneDelegate.swift; sourceTree = "<group>"; };
-		12DAD21624E34FEC009ADD26 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				1244D79724E38FD600E8C1CF /* DataModel.xcdatamodeld */,
-				12DAD21624E34FEC009ADD26 /* Item.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -176,7 +173,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12DAD21724E34FEC009ADD26 /* Item.swift in Sources */,
 				1244D79924E38FD600E8C1CF /* DataModel.xcdatamodeld in Sources */,
 				12DAD20524E3217C009ADD26 /* TodoListViewController.swift in Sources */,
 				12DAD20124E3217C009ADD26 /* AppDelegate.swift in Sources */,
