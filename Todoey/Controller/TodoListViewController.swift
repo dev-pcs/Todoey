@@ -10,14 +10,13 @@ import UIKit
 
 class TodoListViewController: UITableViewController {
     
+    
     var itemArray = [Item]()
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("items.plist")
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print(dataFilePath)
-        
         loadItems()
     }
     
@@ -28,7 +27,7 @@ class TodoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
     }
-     
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         
@@ -66,7 +65,7 @@ class TodoListViewController: UITableViewController {
             let newItem     = Item()
             newItem.title   = textField.text!
             self.itemArray.append(newItem)
-
+            
             self.saveItems()
         }
         
@@ -81,11 +80,11 @@ class TodoListViewController: UITableViewController {
     }
     
     
+    
     //MARK: - Model manipulation method
-
+    
     func saveItems() {
         let encoder     = PropertyListEncoder()
-        
         do{
             let data    = try encoder.encode(itemArray)
             try data.write(to: dataFilePath!)
