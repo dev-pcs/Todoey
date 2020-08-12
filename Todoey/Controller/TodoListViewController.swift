@@ -18,8 +18,8 @@ class TodoListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        loadItems()
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        loadItems()
+//        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
     
@@ -47,6 +47,8 @@ class TodoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+//        context.delete(itemArray[indexPath.row])
+//        itemArray.remove(at: indexPath.row)
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done  //checkmark toggle
         
         saveItems()
@@ -98,16 +100,14 @@ class TodoListViewController: UITableViewController {
     }
     
     
-//    func loadItems() {
-//        if let data         = try? Data(contentsOf: dataFilePath!) {
-//            let decoder     = PropertyListDecoder()
-//            do{
-//                itemArray   = try decoder.decode([Item].self, from: data)
-//            }catch {
-//                print("error decoding data\(error)")
-//            }
-//        }
-//    }
+    func loadItems() {
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        do {
+            itemArray = try context.fetch(request)
+        } catch {
+            print("error fetching data \(error)")
+        }
+    }
 }
 
 
