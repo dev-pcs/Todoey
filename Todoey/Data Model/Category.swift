@@ -11,5 +11,6 @@ import RealmSwift
 
 class Category: Object {                        //object is needed for saving realm objects
     @objc dynamic var name: String = ""         //to update data dynamically
+    @objc dynamic var color: String = ""
     let items = List<Item>()                    //forward relationship
 }

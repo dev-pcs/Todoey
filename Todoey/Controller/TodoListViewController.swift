@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class TodoListViewController: SwipeTableViewController {
     
@@ -19,6 +20,7 @@ class TodoListViewController: SwipeTableViewController {
     var selectedCategory: Category? {
         didSet{
             loadItems()     //do this when the vlaue is set to new value
+            tableView.separatorStyle = .none
         }
     }
     
@@ -27,6 +29,26 @@ class TodoListViewController: SwipeTableViewController {
         super.viewDidLoad()
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let coloHex = selectedCategory?.color {
+            title = selectedCategory!.name
+            guard let navbar = navigationController?.navigationBar else {
+                fatalError("Navigation controller does not exist ")
+            }
+            
+            if let navBarColor = UIColor(hexString: coloHex) {
+                navbar.barTintColor = navBarColor
+                navbar.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
+                searchBar.barTintColor = navBarColor
+                navbar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: ContrastColorOf(navBarColor, returnFlat: true)]
+            }
+            
+            
+        }
+    }
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     //MARK: - TableView Datasource Methods
@@ -41,6 +63,13 @@ class TodoListViewController: SwipeTableViewController {
         
         if let item = todoItems?[indexPath.row] {
             cell.textLabel?.text = item.title
+            
+            if let color = UIColor(hexString: selectedCategory!.color)?.darken(byPercentage:(CGFloat(indexPath.row) / CGFloat(todoItems!.count))) {
+                
+                cell.backgroundColor = color
+                cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
+            }
+            
             
             cell.accessoryType = item.done == true ? .checkmark : .none     
         }else {
