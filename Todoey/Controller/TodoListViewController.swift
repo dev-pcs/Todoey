@@ -15,12 +15,13 @@ class TodoListViewController: UITableViewController {
     var todoItems: Results<Item>?
     let realm = try! Realm()
     
+    
     var selectedCategory: Category? {
         didSet{
             loadItems()     //do this when the vlaue is set to new value
         }
-        
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,7 @@ class TodoListViewController: UITableViewController {
         if let item = todoItems?[indexPath.row] {
             cell.textLabel?.text = item.title
             
-            cell.accessoryType = item.done == true ? .checkmark : .none     //ternary operator
+            cell.accessoryType = item.done == true ? .checkmark : .none     
         }else {
             cell.textLabel?.text = "No Items added"
         }
@@ -56,7 +57,6 @@ class TodoListViewController: UITableViewController {
         if let item = todoItems?[indexPath.row] {
             do {
                 try realm.write{
-                    //                    realm.delete(item)
                     item.done = !item.done
                 }
             }catch {
@@ -70,6 +70,7 @@ class TodoListViewController: UITableViewController {
     
     
     //MARK: - Add new items
+    
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
@@ -116,6 +117,8 @@ class TodoListViewController: UITableViewController {
         tableView.reloadData()
     }
 }
+
+
 
 //MARK: - Searchbar methods
 

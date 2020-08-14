@@ -11,9 +11,10 @@ import RealmSwift
 
 class CategoryViewController: UITableViewController {
     
-    let realm = try! Realm()
     
-    var categories: Results<Category>?
+    let realm = try! Realm()
+    var categories: Results<Category>?      //collection of results
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,9 @@ class CategoryViewController: UITableViewController {
     }
     
     
+    
     //MARK: - TableView DataSource Methods
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories?.count ?? 1
@@ -37,7 +40,11 @@ class CategoryViewController: UITableViewController {
         return cell
     }
     
+    
+    
     //MARK: - Data Manipulation Mathods
+    
+    
     func save(category: Category) {
         do{
             try realm.write {
@@ -55,14 +62,16 @@ class CategoryViewController: UITableViewController {
     }
     
     
+    
     //MARK: - add new categories
+    
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
         var textField = UITextField()
         
         let alert = UIAlertController(title: "Add new category", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Add category", style: .default) { (action) in
+        let action = UIAlertAction(title: "Add", style: .default) { (action) in
             
             let newCategory = Category()
             newCategory.name = textField.text!
@@ -78,6 +87,7 @@ class CategoryViewController: UITableViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
+    
     
     
     //MARK: - tableView delegate methods
